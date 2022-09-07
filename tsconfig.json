@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist/",
+    "noImplicitAny": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "moduleResolution": "NodeNext",
+    "esModuleInterop": true,
+    "module": "ESNext",
+    "target": "es6",
+    "allowJs": true,
+    "lib": ["DOM", "WebWorker"],
+    "baseUrl": "src",
+  },
+}

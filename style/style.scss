@@ -1,0 +1,180 @@
+@font-face {
+  font-family: Lato;
+  src: url(../fonts/Lato-Light.woff2);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  background-color: hsl(200, 10%, 10%);
+  color: white;
+}
+
+#upload-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+
+  input[type='submit'] {
+    margin-top: 20px;
+    border: 1px solid white;
+    background-color: hsl(200, 10%, 10%);
+    color: hsl(0, 0%, 60%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 12px;
+    font-size: 20px;
+  }
+
+  span {
+    border: 2px dashed hsl(0, 0%, 60%);
+    padding: 6px 12px;
+  }
+}
+
+svg {
+  user-select: none;
+}
+
+#file-input {
+  display: none;
+}
+
+.chart {
+  width: auto;
+  height: 240px;
+  position: relative;
+  overflow: hidden;
+}
+
+svg#chart {
+  position: absolute;
+  overflow: visible;
+
+  circle {
+    fill: hsla(200, 80%, 60%, 0.75);
+    transition-duration: 300ms;
+
+    &.selected {
+      fill: hsla(100, 100%, 60%, 0.75);
+    }
+
+    &.hovered {
+      fill: hsla(300, 100%, 60%, 0.75);
+
+      &.history-point {
+        fill: hsla(100, 100%, 60%, 0.75);
+      }
+
+      &.min {
+        fill: hsla(100, 80%, 60%, 0.75);
+      }
+
+      &.max {
+        fill: hsla(0, 100%, 60%, 0.85);
+      }
+    }
+
+    &.history-point {
+      fill: hsla(300, 100%, 60%, 0.75);
+    }
+  }
+}
+
+svg#chart-axis {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: hsl(200, 8%, 12%);
+
+  .plot-line {
+    fill: none;
+    transition-duration: 300ms;
+
+    &.plot-line__mean {
+      &.hovered {
+        fill: hsl(100, 90%, 40%);
+      }
+    }
+
+    &.plot-line__median {
+      &.hovered {
+        fill: hsl(0, 90%, 40%);
+      }
+    }
+  }
+}
+
+#chart-xAxis {
+  fill: hsl(0, 0%, 40%);
+  transform: translateY(calc(100% - 2px));
+}
+
+.xAxis-mark {
+  fill: hsla(200, 10%, 90%, 0.1);
+}
+
+#chart-yAxis {
+  fill: hsl(0, 0%, 40%);
+}
+
+#chart-section {
+  width: 94%;
+  margin: 50px auto;
+
+  text {
+    fill: hsl(0, 0%, 60%);
+  }
+
+  tspan {
+    fill: hsl(0, 0%, 40%);
+    font-size: 14px;
+  }
+}
+
+.stats {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  max-width: 600px;
+
+  &__container {
+    display: flex;
+    margin-left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__result {
+    display: flex;
+  }
+
+  &__name {
+    width: 140px;
+    display: flex;
+    text-align: end;
+  }
+
+  &__value {
+    color: hsl(0, 0%, 60%);
+    width: 80px;
+
+    span {
+      color: hsl(0, 0%, 40%);
+      font-size: 14px;
+    }
+  }
+
+  &__history {
+    margin-left: 4px;
+  }
+}
