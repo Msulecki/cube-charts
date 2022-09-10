@@ -8,8 +8,8 @@ import addXAxisDescription from 'helpers/plot/addXAxisDescription';
 
 const plotData = (result: Statistics) => {
   const { allResults, bestTime: min, worstTime: max, mean, median } = result;
-  const chartContainer = document.getElementById('chart');
-  const chartAxisContainer = document.getElementById('chart-axis');
+  const chartContainer = document.getElementById(config.id.chart.chart);
+  const chartAxisContainer = document.getElementById(config.id.chart.chartAxis);
 
   const minValue = min.time.value;
   const maxValue = max.time.value;
@@ -17,7 +17,7 @@ const plotData = (result: Statistics) => {
   allResults.forEach((result, index) => {
     const currentValue = result.time.value;
 
-    const xCoordinate = (index / allResults.length) * 100 + '%';
+    const xCoordinate = (index / allResults.length) * 100;
     const yCoordinate = calculateYCoordinate({
       currentValue,
       minValue,
