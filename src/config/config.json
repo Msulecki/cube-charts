@@ -1,7 +1,24 @@
 {
     "csvColumnMap":["id", "time", null, "scramble", "date", null],
     "id":{
-        "chart":"chart",
+        "chart":{
+            "chart":"chart",
+            "chartAxis":"chart-axis",
+            "xAxis":"chart-xAxis",
+            "yAxis":"chart-yAxis",
+            "section":"chart-section"
+        },
+        "uploadForm":{
+            "section":"upload-section",
+            "form":"upload-form",
+            "submit":"upload-submit",
+            "label":"upload-label",
+            "labelText":"upload-label-text",
+            "labelFilename":"upload-label-filename",
+            "fileInput":"file-input",
+            "filenameStart":"filename-start",
+            "filenameEnd":"filename-end"
+        },
         "plot":{
             "mean":"line-mean",
             "median":"line-median",
@@ -11,22 +28,23 @@
             "xAxisMarkEnd":"xAxis-mark_1"
         },
         "stats":{
+            "section":"stats-section",
+            "title":"stats-title",
             "best":"stats-best-time",
             "mean":"stats-mean",
             "median":"stats-median",
             "mo3":"stats-mo3",
             "ao5":"stats-ao5",
             "ao12":"stats-ao12",
-            "ao100":"stats-ao100",
-            "statsContainer":"stats-container"
+            "ao100":"stats-ao100"
         }
     },
     "plot":{
         "axisWidth":2,
-        "axisPadding":10,
-        "xAxisOffset":25,
-        "xAxisMarkCount":7,
-        "yAxisOffset":45,
+        "axisPadding":20,
+        "xAxisOffset":26,
+        "xAxisMarkCount":6,
+        "yAxisOffset":50,
         "lineHeight":1,
         "lineHeightHovered":2,
         "circleRadius":2,
