@@ -52,6 +52,7 @@ export interface Statistics {
 }
 
 export interface StatisticsAddData {
+  title: string;
   resultData: Statistics;
   target: HTMLElement;
   uuid?: string;
@@ -116,7 +117,7 @@ interface PlotElement {
 }
 
 export interface PlotPoint extends PlotElement {
-  x: string;
+  x: number;
 }
 
 export interface PlotLine extends PlotElement {
