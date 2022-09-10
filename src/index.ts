@@ -9,12 +9,17 @@ import { Statistics } from 'types';
 import '../style/style.scss';
 import addStatsPlaceholder from 'helpers/DOM/addStatsPlaceholder';
 import updatePlotLines from 'helpers/plot/updatePlotLines';
+import attachUploadForm from 'helpers/DOM/attachUploadForm';
+import removeUploadFormFromDOM from 'helpers/DOM/removeUploadFormFromDOM';
 
 function init() {
   const { postMessage, onMessage, onError } = loadWorker();
 
+  attachUploadForm();
+
   const initializeFileUpload = () => {
     uploadHandler().then((csv: string) => {
+      removeUploadFormFromDOM();
       postMessage({ csv });
     });
   };
@@ -34,6 +39,7 @@ function init() {
 
     const statsContainer = addStatsPlaceholder();
     addStats({
+      title: 'All time statistics',
       resultData: result,
       target: statsContainer,
       onLineUpdate: () => updatePlotLines(result),
