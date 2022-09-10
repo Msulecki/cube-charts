@@ -5,6 +5,7 @@ import addAbsoluteValueToStats from 'helpers/plot/addAbsoluteValueToStats';
 import config from 'config';
 
 const addStats = ({
+  title,
   resultData,
   target = document.body,
   uuid = '',
@@ -17,6 +18,17 @@ const addStats = ({
 
   statsContainer.setAttribute('id', 'stats' + uuid);
   statsContainer.classList.add('stats');
+
+  const titleContainer =
+    document.getElementById('stats-title' + uuid) ||
+    document.createElement('div');
+
+  titleContainer.setAttribute('id', 'stats-title' + uuid);
+  titleContainer.classList.add('stats__title');
+
+  titleContainer.textContent = title;
+
+  statsContainer.appendChild(titleContainer);
 
   addSingleValueToStats({
     container: statsContainer,
