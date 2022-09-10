@@ -25,7 +25,7 @@ const attachXAxisMarks = (target: SVGSVGElement) => {
   xAxisMarkEnd.setAttribute('height', `${config.plot.xAxisOffset}`);
   xAxisMarkEnd.setAttribute('id', config.id.plot.xAxisMarkEnd);
 
-  xAxisMarkEnd.style.transform = `translate(calc(100% - 4px), ${markYOffset})`;
+  xAxisMarkEnd.style.transform = `translate(calc(100% - 6px), ${markYOffset})`;
   xAxisMarkEnd.style.textAnchor = 'end';
 
   target.appendChild(xAxisMarkStart);
