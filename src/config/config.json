@@ -1,6 +1,7 @@
 {
     "csvColumnMap":["id", "time", null, "scramble", "date", null],
     "id":{
+        "backButton":"button-back",
         "chart":{
             "chart":"chart",
             "chartAxis":"chart-axis",
