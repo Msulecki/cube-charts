@@ -8,9 +8,14 @@ const addResultToPlot = ({ target, x, y, id }: PlotPoint) => {
   );
 
   plotPoint.setAttribute('r', `${config.plot.circleRadius}`);
-  // plotPoint.setAttribute('cy', y);
-  plotPoint.style.transform = `translateY(${y}%)`;
-  plotPoint.setAttribute('cx', x);
+  plotPoint.setAttribute('cx', `${Math.random() * 100}%`);
+  plotPoint.setAttribute('cy', `${Math.random() * 100}%`);
+
+  setTimeout(() => {
+    plotPoint.setAttribute('cx', `${x}%`);
+    plotPoint.setAttribute('cy', `${y}%`);
+  }, Math.random() * 300);
+
   plotPoint.setAttribute('id', id);
 
   target.appendChild(plotPoint);
