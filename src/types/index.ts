@@ -123,3 +123,7 @@ export interface PlotPoint extends PlotElement {
 export interface PlotLine extends PlotElement {
   classes: string[];
 }
+
+export interface BackButton {
+  onClick: Function;
+}
