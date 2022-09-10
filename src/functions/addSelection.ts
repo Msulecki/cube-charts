@@ -5,18 +5,14 @@ import { Statistics } from 'types';
 import addStats from './addStats';
 
 const addSelection = (results: Statistics) => {
-  const chartContainer = document.getElementById(config.id.chart);
-  const statsContainer = document.getElementById(
-    config.id.stats.statsContainer
-  );
+  const chartContainer = document.getElementById(config.id.chart.chart);
+  const statsContainer = document.getElementById(config.id.stats.section);
 
   let isMouseDown = false;
   let startPosition: null | number = null;
-  let endPosition: null | number = null;
 
   chartContainer.onmousedown = () => {
     isMouseDown = true;
-    endPosition = null;
 
     results.allResults.forEach((result) => {
       const point = document.getElementById(
@@ -51,6 +47,7 @@ const addSelection = (results: Statistics) => {
       onLineUpdate();
 
       addStats({
+        title: 'Selected',
         resultData: fullStatistics,
         target: statsContainer,
         uuid: '-selected',
@@ -88,6 +85,7 @@ const addSelection = (results: Statistics) => {
           const pointXPosition = parseFloat(
             point.getAttribute('cx').split('%')[0]
           );
+
           if (pointXPosition >= minPosition && pointXPosition <= maxPosition) {
             point.classList.add('selected');
 
