@@ -1,6 +1,8 @@
+import config from 'config';
+
 const removeOldDataFromDOM = () => {
-  const chartSection = document.getElementById('chart-section');
-  const statsSection = document.getElementById('stats-section');
+  const chartSection = document.getElementById(config.id.chart.section);
+  const statsSection = document.getElementById(config.id.stats.section);
 
   if (chartSection) {
     document.body.removeChild(chartSection);

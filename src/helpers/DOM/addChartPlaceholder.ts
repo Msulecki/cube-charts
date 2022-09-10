@@ -6,7 +6,7 @@ import attachXAxisMarks from './attachXAxisMarks';
 
 const addChartPlaceholder = (target: HTMLElement = document.body) => {
   const section = document.createElement('section');
-  section.setAttribute('id', 'chart-section');
+  section.setAttribute('id', config.id.chart.section);
 
   const chartContainer = document.createElement('div');
   chartContainer.classList.add('chart');
@@ -15,10 +15,10 @@ const addChartPlaceholder = (target: HTMLElement = document.body) => {
     'http://www.w3.org/2000/svg',
     'svg'
   );
-  chartAxis.setAttribute('id', 'chart-axis');
+  chartAxis.setAttribute('id', config.id.chart.chartAxis);
 
   const chart = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-  chart.setAttribute('id', 'chart');
+  chart.setAttribute('id', config.id.chart.chart);
 
   attachChartStyle(chart);
 
