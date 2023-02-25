@@ -81,6 +81,12 @@ export interface AbsoluteStatisticsEntry extends StatisticsEntry {
   plotNodeId: string;
 }
 
+export interface AddSelection {
+  results: Statistics;
+  onSelection: Function;
+  onReset: Function;
+}
+
 export interface ResultContainerEntry {
   id: string;
   classes: string[];

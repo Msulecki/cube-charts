@@ -1,54 +1,58 @@
 {
-    "csvColumnMap":["id", "time", null, "scramble", "date", null],
-    "id":{
-        "backButton":"button-back",
-        "chart":{
-            "chart":"chart",
-            "chartAxis":"chart-axis",
-            "xAxis":"chart-xAxis",
-            "yAxis":"chart-yAxis",
-            "section":"chart-section"
-        },
-        "uploadForm":{
-            "section":"upload-section",
-            "form":"upload-form",
-            "submit":"upload-submit",
-            "label":"upload-label",
-            "labelText":"upload-label-text",
-            "labelFilename":"upload-label-filename",
-            "fileInput":"file-input",
-            "filenameStart":"filename-start",
-            "filenameEnd":"filename-end"
-        },
-        "plot":{
-            "mean":"line-mean",
-            "median":"line-median",
-            "pointIdPrefix":"point_",
-            "yAxisMarkPrefix":"yAxis-mark_",
-            "xAxisMarkStart":"xAxis-mark_0",
-            "xAxisMarkEnd":"xAxis-mark_1"
-        },
-        "stats":{
-            "section":"stats-section",
-            "title":"stats-title",
-            "best":"stats-best-time",
-            "mean":"stats-mean",
-            "median":"stats-median",
-            "mo3":"stats-mo3",
-            "ao5":"stats-ao5",
-            "ao12":"stats-ao12",
-            "ao100":"stats-ao100"
-        }
+  "csvColumnMap": ["id", "time", null, "scramble", "date", null],
+  "id": {
+    "button": {
+      "back": "button-back",
+      "reset": "button-reset",
+      "zoom": "button-zoom"
     },
-    "plot":{
-        "axisWidth":2,
-        "axisPadding":20,
-        "xAxisOffset":26,
-        "xAxisMarkCount":6,
-        "yAxisOffset":50,
-        "lineHeight":1,
-        "lineHeightHovered":2,
-        "circleRadius":2,
-        "circleRadiusHovered":5
+    "chart": {
+      "chart": "chart",
+      "chartAxis": "chart-axis",
+      "xAxis": "chart-xAxis",
+      "yAxis": "chart-yAxis",
+      "section": "chart-section"
+    },
+    "uploadForm": {
+      "section": "upload-section",
+      "form": "upload-form",
+      "submit": "upload-submit",
+      "label": "upload-label",
+      "labelText": "upload-label-text",
+      "labelFilename": "upload-label-filename",
+      "fileInput": "file-input",
+      "filenameStart": "filename-start",
+      "filenameEnd": "filename-end"
+    },
+    "plot": {
+      "mean": "line-mean",
+      "median": "line-median",
+      "pointIdPrefix": "point_",
+      "yAxisMarkPrefix": "yAxis-mark_",
+      "xAxisMarkStart": "xAxis-mark_0",
+      "xAxisMarkEnd": "xAxis-mark_1"
+    },
+    "stats": {
+      "section": "stats-section",
+      "title": "stats-title",
+      "best": "stats-best-time",
+      "mean": "stats-mean",
+      "median": "stats-median",
+      "mo3": "stats-mo3",
+      "ao5": "stats-ao5",
+      "ao12": "stats-ao12",
+      "ao100": "stats-ao100"
     }
+  },
+  "plot": {
+    "axisWidth": 2,
+    "axisPadding": 20,
+    "xAxisOffset": 26,
+    "xAxisMarkCount": 6,
+    "yAxisOffset": 50,
+    "lineHeight": 1,
+    "lineHeightHovered": 2,
+    "circleRadius": 2,
+    "circleRadiusHovered": 5
+  }
 }

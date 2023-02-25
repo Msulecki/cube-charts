@@ -1,15 +1,17 @@
 import config from 'config';
 import updatePlotLines from 'helpers/plot/updatePlotLines';
 import createStatisticsObject from 'helpers/statistics/createStatisticsObject';
-import { Statistics } from 'types';
+import { AddSelection, Statistics } from 'types';
 import addStats from './addStats';
 
-const addSelection = (results: Statistics) => {
+const addSelection = ({ results, onSelection, onReset }: AddSelection) => {
   const chartContainer = document.getElementById(config.id.chart.chart);
   const statsContainer = document.getElementById(config.id.stats.section);
 
   let isMouseDown = false;
   let startPosition: null | number = null;
+
+  const selection = [];
 
   chartContainer.onmousedown = () => {
     isMouseDown = true;
@@ -53,6 +55,26 @@ const addSelection = (results: Statistics) => {
         uuid: '-selected',
         onLineUpdate,
       });
+
+      const button =
+        document.getElementById(config.id.button.reset) ||
+        document.createElement('button');
+      button.setAttribute('id', config.id.button.reset);
+      button.innerText = 'reset';
+      button.onclick = () => {
+        console.log('onReset');
+        onReset();
+      };
+
+      const container = document.getElementById('stats' + '-selected');
+      container.appendChild(button);
+
+      if (
+        selectedResults.length >= 10 &&
+        selectedResults.length !== results.allResults.length
+      ) {
+        onSelection(fullStatistics);
+      }
     } else if (statsContainer.childNodes.length > 1) {
       statsContainer.removeChild(statsContainer.lastChild);
     }

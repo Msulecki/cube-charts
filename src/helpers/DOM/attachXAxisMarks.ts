@@ -6,9 +6,19 @@ const attachXAxisMarks = (target: SVGSVGElement) => {
     'text'
   );
 
+  const xAxisMarkStartGroup = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'g'
+  );
+
   const xAxisMarkEnd = document.createElementNS(
     'http://www.w3.org/2000/svg',
     'text'
+  );
+
+  const xAxisMarkEndGroup = document.createElementNS(
+    'http://www.w3.org/2000/svg',
+    'g'
   );
 
   const markYOffset = `calc(100% - ${config.plot.xAxisOffset}px + 18px)`;
@@ -17,7 +27,7 @@ const attachXAxisMarks = (target: SVGSVGElement) => {
   xAxisMarkStart.setAttribute('height', `${config.plot.xAxisOffset}`);
   xAxisMarkStart.setAttribute('id', config.id.plot.xAxisMarkStart);
 
-  xAxisMarkStart.style.transform = `translate(${
+  xAxisMarkStartGroup.style.transform = `translate(${
     config.plot.yAxisOffset + 6
   }px, ${markYOffset})`;
 
@@ -25,11 +35,14 @@ const attachXAxisMarks = (target: SVGSVGElement) => {
   xAxisMarkEnd.setAttribute('height', `${config.plot.xAxisOffset}`);
   xAxisMarkEnd.setAttribute('id', config.id.plot.xAxisMarkEnd);
 
-  xAxisMarkEnd.style.transform = `translate(calc(100% - 6px), ${markYOffset})`;
+  xAxisMarkEndGroup.style.transform = `translate(calc(100% - 6px), ${markYOffset})`;
   xAxisMarkEnd.style.textAnchor = 'end';
 
-  target.appendChild(xAxisMarkStart);
-  target.appendChild(xAxisMarkEnd);
+  xAxisMarkStartGroup.appendChild(xAxisMarkStart);
+  target.appendChild(xAxisMarkStartGroup);
+
+  xAxisMarkEndGroup.appendChild(xAxisMarkEnd);
+  target.appendChild(xAxisMarkEndGroup);
 };
 
 export default attachXAxisMarks;

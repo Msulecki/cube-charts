@@ -12,6 +12,11 @@ const attachYAxisMarks = (target: SVGSVGElement, count: number) => {
       'text'
     );
 
+    const axisMarkTextGroup = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'g'
+    );
+
     const xTransform = `${config.plot.axisWidth + config.plot.yAxisOffset}px`;
 
     const yTransform = `calc(((100% - ${
@@ -25,7 +30,7 @@ const attachYAxisMarks = (target: SVGSVGElement, count: number) => {
     axisMarkText.setAttribute('height', '16');
     axisMarkText.setAttribute('id', `${config.id.plot.yAxisMarkPrefix}${i}`);
 
-    axisMarkText.style.transform = `translate(-2px ,calc(${yTransform} + 6px))`;
+    axisMarkTextGroup.style.transform = `translate(-2px ,calc(${yTransform} + 6px))`;
     axisMarkText.style.textAnchor = 'end';
 
     axisMark.setAttribute('width', '100%');
@@ -34,7 +39,9 @@ const attachYAxisMarks = (target: SVGSVGElement, count: number) => {
 
     axisMark.classList.add('xAxis-mark');
 
-    target.appendChild(axisMarkText);
+    axisMarkTextGroup.appendChild(axisMarkText);
+
+    target.appendChild(axisMarkTextGroup);
     target.appendChild(axisMark);
   }
 };

@@ -2,10 +2,12 @@ import config from 'config';
 import { BackButton } from 'types';
 
 const attachBackButton = ({ onClick }: BackButton) => {
-  const backButton = document.createElement('button');
+  const backButton =
+    document.getElementById(config.id.button.back) ||
+    document.createElement('button');
 
-  backButton.textContent = '↺';
-  backButton.setAttribute('id', config.id.backButton);
+  backButton.textContent = 'Upload new';
+  backButton.setAttribute('id', config.id.button.back);
   backButton.onclick = (e) => onClick(e);
 
   document.body.appendChild(backButton);

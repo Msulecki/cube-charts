@@ -11,7 +11,7 @@ import addStatsPlaceholder from 'helpers/DOM/addStatsPlaceholder';
 import updatePlotLines from 'helpers/plot/updatePlotLines';
 import attachUploadForm from 'helpers/DOM/attachUploadForm';
 import removeUploadFormFromDOM from 'helpers/DOM/removeUploadFormFromDOM';
-import attachBackButton from 'helpers/DOM/attachBackButon';
+import attachBackButton from 'helpers/DOM/attachBackButton';
 import removeBackButtonFromDOM from 'helpers/DOM/removeBackButtonFromDOM';
 
 function init() {
@@ -19,8 +19,9 @@ function init() {
 
   attachUploadForm();
 
+  const originalData = {};
+
   const initializeFileUpload = () => {
-    console.log('clicked');
     uploadHandler().then((csv: string) => {
       removeUploadFormFromDOM();
       postMessage({ csv });
@@ -36,6 +37,23 @@ function init() {
       return;
     }
 
+    Object.assign(originalData, result);
+
+    reloadData(result);
+  });
+
+  onError((error: any) => console.error('WORKER ERROR', error));
+
+  initializeFileUpload();
+
+  const resetData = () => {
+    removeOldDataFromDOM();
+    attachUploadForm();
+    initializeFileUpload();
+    removeBackButtonFromDOM();
+  };
+
+  const reloadData = (result: Statistics) => {
     removeOldDataFromDOM();
     attachBackButton({ onClick: resetData });
     addChartPlaceholder();
@@ -49,20 +67,13 @@ function init() {
       onLineUpdate: () => updatePlotLines(result),
     });
 
-    addSelection(result);
+    addSelection({
+      results: result,
+      onSelection: reloadData,
+      onReset: () => reloadData(originalData as Statistics),
+    });
 
     initializeFileUpload();
-  });
-
-  onError((error: any) => console.error('WORKER ERROR', error));
-
-  initializeFileUpload();
-
-  const resetData = () => {
-    removeOldDataFromDOM();
-    attachUploadForm();
-    initializeFileUpload();
-    removeBackButtonFromDOM();
   };
 }
 
