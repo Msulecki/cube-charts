@@ -62,7 +62,6 @@ const addSelection = ({ results, onSelection, onReset }: AddSelection) => {
       button.setAttribute('id', config.id.button.reset);
       button.innerText = 'reset';
       button.onmouseup = () => {
-        console.log('onReset');
         onReset();
       };
 

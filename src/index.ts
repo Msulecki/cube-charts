@@ -25,15 +25,12 @@ function init() {
     uploadHandler().then(({ csv, separator }) => {
       removeUploadFormFromDOM();
 
-      console.log('postMessage', { csv, separator });
       postMessage({ csv, separator });
     });
   };
 
   onMessage((message: any) => {
     const result: Statistics = message.data?.result;
-
-    console.log('onMessage', message);
 
     if (!result || message.data.error) {
       console.error('errored', message.data.error || 'no result');
@@ -62,8 +59,6 @@ function init() {
     attachBackButton({ onClick: resetData });
     addChartPlaceholder();
     plotData(result);
-
-    console.log('reload data', result);
 
     const statsContainer = addStatsPlaceholder();
 
