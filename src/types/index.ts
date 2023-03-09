@@ -1,5 +1,13 @@
-type ParserMessageData = {
+export const separatorsCollection = [';', ','] as const;
+
+export type CSVSeparator = typeof separatorsCollection[number];
+
+export const isSeparator = (value: any): value is CSVSeparator =>
+  separatorsCollection.includes(value);
+
+export type ParserMessageData = {
   csv: string;
+  separator?: CSVSeparator;
 };
 
 export interface ParserMessage {

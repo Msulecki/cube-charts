@@ -61,7 +61,7 @@ const addSelection = ({ results, onSelection, onReset }: AddSelection) => {
         document.createElement('button');
       button.setAttribute('id', config.id.button.reset);
       button.innerText = 'reset';
-      button.onclick = () => {
+      button.onmouseup = () => {
         console.log('onReset');
         onReset();
       };
@@ -73,7 +73,16 @@ const addSelection = ({ results, onSelection, onReset }: AddSelection) => {
         selectedResults.length >= 10 &&
         selectedResults.length !== results.allResults.length
       ) {
-        onSelection(fullStatistics);
+        const button =
+          document.getElementById(config.id.button.zoom) ||
+          document.createElement('button');
+        button.setAttribute('id', config.id.button.zoom);
+        button.innerText = 'zoom to selection';
+        button.onmouseup = () => {
+          onSelection(fullStatistics);
+        };
+
+        container.appendChild(button);
       }
     } else if (statsContainer.childNodes.length > 1) {
       statsContainer.removeChild(statsContainer.lastChild);

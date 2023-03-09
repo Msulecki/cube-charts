@@ -5,14 +5,14 @@ import createStatisticsObject from 'helpers/statistics/createStatisticsObject';
 
 self.onmessage = (props: ParserMessage) => {
   const {
-    data: { csv },
+    data: { csv, separator },
   } = props;
 
   if (!csv) {
     return;
   }
 
-  parseToObject(csv)
+  parseToObject(csv, separator)
     .then((csvObject: CSVRawObject[]) => parseCsvObjectValues(csvObject))
     .then(createStatisticsObject)
     .then((result: any) => {

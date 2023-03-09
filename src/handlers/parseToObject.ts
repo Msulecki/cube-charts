@@ -1,6 +1,7 @@
 import config from 'config';
+import { CSVSeparator } from 'types/index';
 
-const parseToObject = (csv: string) =>
+const parseToObject = (csv: string, separator: CSVSeparator) =>
   new Promise((resolve, reject) => {
     const columnMap = config.csvColumnMap;
 
@@ -9,7 +10,7 @@ const parseToObject = (csv: string) =>
         .split('\r\n')
         .filter((_, index) => index > 0)
         .map((item) => {
-          const itemArray = item.split(';');
+          const itemArray = item.split(separator);
 
           const itemObject = itemArray.reduce((acc, curr, index) => {
             if (columnMap[index]) {

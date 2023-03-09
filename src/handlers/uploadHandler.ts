@@ -1,6 +1,13 @@
-const uploadHandler = () => {
-  const uploadForm = document.getElementById('upload-form') as HTMLFormElement;
-  const fileInput = document.getElementById('file-input') as HTMLInputElement;
+import config from 'config/index';
+import { CSVSeparator, isSeparator, ParserMessageData } from 'types/index';
+
+const uploadHandler = (): Promise<ParserMessageData> => {
+  const uploadForm = document.getElementById(
+    config.id.uploadForm.form
+  ) as HTMLFormElement;
+  const fileInput = document.getElementById(
+    config.id.uploadForm.fileInput
+  ) as HTMLInputElement;
 
   const handleFileSelect = (e: any) => {
     const fileName: string = e.target?.files[0]?.name;
@@ -9,20 +16,24 @@ const uploadHandler = () => {
       return;
     }
 
-    const uploadButton = document.getElementById('upload-submit');
+    const uploadButton = document.getElementById(config.id.uploadForm.submit);
     uploadButton.classList.add('enabled');
 
     const textEnd = fileName.slice(-8);
     const textStart = fileName.slice(0, -8);
 
-    const textStartContainer = document.getElementById('filename-start');
-    const textEndContainer = document.getElementById('filename-end');
+    const textStartContainer = document.getElementById(
+      config.id.uploadForm.filenameStart
+    );
+    const textEndContainer = document.getElementById(
+      config.id.uploadForm.filenameEnd
+    );
 
     textStartContainer.textContent = textStart;
     textEndContainer.textContent = textEnd;
   };
 
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve: (data: ParserMessageData) => void, reject) => {
     const handleSubmit = (e: SubmitEvent) => {
       e.preventDefault();
 
@@ -32,7 +43,14 @@ const uploadHandler = () => {
         const reader = new FileReader();
 
         const onLoad = (e: ProgressEvent<FileReader>) => {
-          const { result } = e.target;
+          const result = e.target.result as string;
+          const separatorElement = document.getElementById(
+            config.id.uploadForm.separator
+          ) as HTMLInputElement;
+
+          const separator = isSeparator(separatorElement.value)
+            ? separatorElement.value
+            : (config.defaultValues.separator as CSVSeparator);
 
           uploadForm.reset();
 
@@ -40,7 +58,7 @@ const uploadHandler = () => {
           reader.removeEventListener('error', onError);
           uploadForm?.removeEventListener('submit', handleSubmit);
 
-          resolve(result);
+          resolve({ csv: result, separator });
         };
 
         const onError = (e: ProgressEvent<FileReader>) => {

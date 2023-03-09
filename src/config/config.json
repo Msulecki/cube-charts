@@ -22,7 +22,8 @@
       "labelFilename": "upload-label-filename",
       "fileInput": "file-input",
       "filenameStart": "filename-start",
-      "filenameEnd": "filename-end"
+      "filenameEnd": "filename-end",
+      "separator": "csv-separator"
     },
     "plot": {
       "mean": "line-mean",
@@ -54,5 +55,8 @@
     "lineHeightHovered": 2,
     "circleRadius": 2,
     "circleRadiusHovered": 5
+  },
+  "defaultValues": {
+    "separator": ";"
   }
 }

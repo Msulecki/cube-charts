@@ -34,6 +34,10 @@ const attachUploadForm = () => {
   const filenameEnd = document.createElement('div');
   filenameEnd.setAttribute('id', config.id.uploadForm.filenameEnd);
 
+  const separator = document.createElement('input');
+  separator.setAttribute('id', config.id.uploadForm.separator);
+  separator.value = config.defaultValues.separator;
+
   fileNameContainer.appendChild(filenameStart);
   fileNameContainer.appendChild(filenameEnd);
 
@@ -43,6 +47,7 @@ const attachUploadForm = () => {
 
   uploadForm.appendChild(label);
   uploadForm.appendChild(submitInput);
+  uploadForm.appendChild(separator);
 
   section.appendChild(uploadForm);
 
