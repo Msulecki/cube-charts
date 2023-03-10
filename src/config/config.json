@@ -53,8 +53,8 @@
     "yAxisOffset": 50,
     "lineHeight": 1,
     "lineHeightHovered": 2,
-    "circleRadius": 2,
-    "circleRadiusHovered": 5
+    "circleRadius": 1.4,
+    "circleRadiusHovered": 4
   },
   "defaultValues": {
     "separator": ";"

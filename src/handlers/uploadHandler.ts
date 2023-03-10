@@ -1,5 +1,5 @@
 import config from 'config/index';
-import { CSVSeparator, isSeparator, ParserMessageData } from 'types/index';
+import { ParserMessageData, separatorsCollection } from 'types/index';
 
 const uploadHandler = (): Promise<ParserMessageData> => {
   const uploadForm = document.getElementById(
@@ -10,7 +10,7 @@ const uploadHandler = (): Promise<ParserMessageData> => {
   ) as HTMLInputElement;
 
   const handleFileSelect = (e: any) => {
-    const fileName: string = e.target?.files[0]?.name;
+    const fileName: string = e.target?.files?.[0]?.name;
 
     if (!fileName) {
       return;
@@ -48,9 +48,9 @@ const uploadHandler = (): Promise<ParserMessageData> => {
             config.id.uploadForm.separator
           ) as HTMLInputElement;
 
-          const separator = isSeparator(separatorElement.value)
-            ? separatorElement.value
-            : (config.defaultValues.separator as CSVSeparator);
+          const separator = separatorElement.checked
+            ? separatorsCollection[1]
+            : separatorsCollection[0];
 
           uploadForm.reset();
 

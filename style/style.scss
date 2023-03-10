@@ -84,6 +84,87 @@ body {
   }
 }
 
+.separator {
+  padding: 4px;
+  display: flex;
+  align-items: flex-end;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+
+  &__option {
+    user-select: none;
+  }
+
+  &__toggle {
+    margin: 0 8px;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__toggle {
+    height: 20px;
+    width: 40px;
+    background-color: hsl(0, 0%, 40%);
+    border-radius: 10px;
+    position: relative;
+
+    cursor: pointer;
+  }
+
+  &__toggle-indicator {
+    height: 16px;
+    width: 16px;
+    border-radius: 8px;
+    background-color: hsl(40, 90%, 70%);
+    transition: 200ms ease-out;
+
+    position: absolute;
+    top: 2px;
+    left: 2px;
+
+    &--check {
+      left: 22px;
+      animation: toggle-on 400ms forwards;
+      transition-delay: 100ms;
+    }
+
+    &--uncheck {
+      left: 2px;
+      animation: toggle-off 400ms forwards;
+      transition-delay: 40ms;
+    }
+  }
+
+  &__option {
+    color: hsl(0, 0%, 60%);
+    font-weight: bold;
+    font-size: 1.4rem;
+
+    &:first-child {
+      color: hsl(0, 0%, 80%);
+    }
+
+    &:last-child {
+      color: hsl(0, 0%, 60%);
+    }
+  }
+
+  &--selected {
+    .separator__option {
+      &:first-child {
+        color: hsl(0, 0%, 60%);
+      }
+
+      &:last-child {
+        color: hsl(0, 0%, 80%);
+      }
+    }
+  }
+}
+
 #button-back {
   position: absolute;
   top: 6px;
@@ -254,5 +335,37 @@ svg#chart-axis {
 
   &__history {
     margin-left: 4px;
+  }
+}
+
+@keyframes toggle-on {
+  0% {
+    width: 16px;
+  }
+
+  40% {
+    width: 24px;
+  }
+
+  80% {
+    width: 16px;
+  }
+
+  100% {
+    width: 16px;
+  }
+}
+
+@keyframes toggle-off {
+  0% {
+    width: 16px;
+  }
+
+  50% {
+    width: 24px;
+  }
+
+  80% {
+    width: 16px;
   }
 }
